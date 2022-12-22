@@ -4,7 +4,7 @@ import "./Form.css";
 
 function Form1() {
   const intialValues = {
-    title: "title",
+    title: "",
     fname: "",
     lname: "",
     company: "",
@@ -17,9 +17,21 @@ function Form1() {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm();
-  const onSubmit = (data) => console.log(data);
+  } = useForm({ shouldUseNativeValidation: true });
+  // const onSubmit = (data) => console.log(data);
 
+  const onSubmit = (data) => {
+    data.preventDefault();
+    console.log(formValues);
+    
+  };
+  const handlechange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setFormValues({...formValues, [name] : value})
+    console.log(formValues);
+  }
+  
   return (
     <div className="cards">
       <div className="card1">
@@ -31,37 +43,35 @@ function Form1() {
               id="title"
               name="title"
               className="labl"
-              onClick={(e) => {
-                setFormValues(e.target.value);
-              }}
+              onClick={handlechange}
             >
-              <option value="" disabled selected hidden>
-                {formValues.title}
-              </option>
               <option value="Mr">Mr</option>
               <option value="Mrs">Mrs</option>
-              console.log(title);
             </select>
             <br />
 
             <input
               type="text"
-              // value={formValues.fname}
-              // onChange={(e) => setFormValues(e.target.value)}
+              name = "fname"
+              value={formValues.fname}
+              onChange={handlechange}
+              
               placeholder="First Name"
               className="fname"
-              {...register("fname", { required: "first name is required" })}
+              {...register("firstName", { required: "Please enter your first name." })}
             />
-            {/* <error>
+            <error>
                               {errors.fname?.type ==="required" && "First Name is required"}
-                            </error> */}
+                            </error>
 
             <input
               type="text"
+              name = 'lname'
               value={formValues.lname}
-              onChange={(e) => setFormValues(e.target.value)}
+              onChange={handlechange}
               placeholder="Last Name"
               className="lname"
+
             />
             <br />
 
@@ -77,8 +87,9 @@ function Form1() {
             <br />
             <input
               type="text"
+              name = 'company'
               value={formValues.company}
-              onChange={(e) => setFormValues(e.target.value)}
+              onChange={handlechange}
               placeholder="Company"
               className="posi"
             />
@@ -86,19 +97,21 @@ function Form1() {
 
             <input
               type="text"
+              name='business'
               value={formValues.business}
-              onChange={(e) => setFormValues(e.target.value)}
+              onChange={handlechange}
               placeholder="Business Arena"
               className="fname"
             />
 
-            <select id="Position" name="Position" className="lname">
+            <select id="Position" name="employees" className="lname">
               <option value="" disabled selected hidden>
                 Employees
               </option>
-              <option value="">10</option>
-              <option value="">20</option>
+              <option value="10">10</option>
+              <option value="20">20</option>
             </select>
+           
           </div>
         </form>
       </div>

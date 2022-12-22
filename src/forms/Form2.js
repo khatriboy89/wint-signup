@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import "./Form.css";
+import {Form1} from "./Form1";
 
 function Form2() {
   const intiallValues = {
@@ -11,52 +12,63 @@ function Form2() {
     phone: "",
     email: "",
   };
-  const [formmValue, setFormmValues] = useState(intiallValues);
+  // const [formmValue, setFormmValues] = useState(intiallValues);
 
   const {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm();
-  const onSubmit = (data) => console.log(data);
+  } = useForm({ shouldUseNativeValidation: true });
+  const onSubmit = async  (data) => {
+    // data.preventDefault();
+    console.log(data);
+  };
+  // const handlechange = (e) => {
+  //   const name = e.target.name;
+  //   const value = e.target.value;
+  //   setFormmValues({...formmValue, [name] : value})
+  //   register(name, {required : "Please fill this feild"});
+  // }
 
   return (
     <div className="cards">
-      <div className="card2" >
-        <form className="full2" >
+      <div className="card2">
+        <form className="full2" onSubmit={handleSubmit(onSubmit)}>
           <h1 className="heading2">Contact Details </h1>
 
           <input
             type="text"
-            value={formmValue.street}
-            onChange={(e) => setFormmValues(e.target.value)}
+            name="street"
+            // value={formmValue.street}
+            // onChange={handlechange}
             placeholder="Street +Nr"
             className="Street"
-            {...register("street", { required: true })}
+            {...register("Street", { required: "Please enter your Street", maxLength: 50 })}
           />
-          <error>
-            {errors.fname?.type === "required" && "First Name is required"}
-          </error>
           <br />
 
           <input
             type="text"
-            value={formmValue.addInfo}
-            onChange={(e) => setFormmValues(e.target.value)}
+            name="addInfo"
+            // value={formmValue.addInfo}
+            // onChange={handlechange}
             placeholder="Additonal Information"
             className="Add-info"
+            {...register("addInfo", { required: "Please enter your addInfo" })}
           />
           <br />
 
           <input
-            type="text"
-            value={formmValue.zip}
-            onChange={(e) => setFormmValues(e.target.value)}
+            type="number"
+            name="zip"
+            // value={formmValue.zip}
+            // onChange={handlechange}
             placeholder="Zip"
             className="zip"
+            {...register("Zip", { required: "Please enter your Zip" })}
           />
 
-          <select id="Place" name="Place" className="place" >
+          <select id="Place" name="Place" className="place">
             <option value="" disabled selected hidden>
               Place
             </option>
@@ -83,43 +95,52 @@ function Form2() {
           </select>
           <br />
           <input
-            type="text"
-            value={formmValue.code}
-            onChange={(e) => setFormmValues(e.target.value)}
+            type="number"
+            name="code"
+            // value={formmValue.code}
+            // onChange={handlechange}
             placeholder="Code +"
             className="code"
+            {...register("code", { required: "Please enter your code" })}
           />
 
           <input
-            type="tel"
-            value={formmValue.phone}
-            onChange={(e) => setFormmValues(e.target.value)}
+            type="number"
+            pattern="[0-9]"
+            name="phone"
+            // value={formmValue.phone}
+            // onChange={handlechange}
             placeholder="Phone number"
             className="phne"
+            {...register("phone", { required: "Please enter your phone" })}
           />
           <br />
           <input
             type="email"
-            value={formmValue.email}
-            onChange={(e) => setFormmValues(e.target.value)}
+            name="email"
+            // value={formmValue.email}
+            // onChange={handlechange}
             placeholder="Your Email"
             className="email"
+            {...register("email", { required: "Please enter your email" })}
           />
           <br />
-          <input type="checkbox" id="terms" name="terms" value="" />
+          <input type="checkbox" id="terms" name="terms" 
+          // value="" 
+          {...register("terms", { required: "Please enter your terms" })}/>
           <span>
             {" "}
             <label for="html" className="terms">
               I do accept the{" "}
-              <a href="#" target="blank" style={{color: "white"}}>
-                Terms and Condition {"\n"}
-              </a> 
+              <a href="#" target="blank" style={{ color: "white" }}>
+                Terms and Condition 
+              </a>
               of your site.
             </label>
             <br></br>
           </span>
           <br />
-          <button className="button" onSubmit={handleSubmit(onSubmit)}>
+          <button className="button">
             Register Badge
           </button>
         </form>

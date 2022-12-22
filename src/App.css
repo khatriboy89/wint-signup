@@ -1,3 +1,4 @@
+
 .cards{
    display: inline-block;
 }
@@ -10,4 +11,5 @@
 .card2{
     position: relative;
     right: 50px;
+    top: -21px;
 }

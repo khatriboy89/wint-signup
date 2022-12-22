@@ -1,3 +1,9 @@
+@media only screen and (min-width: 1024px) {
+    .container header .header-nav-area #nav_container  {
+      display:flex;
+    }
+  }
+
 .full2 > ::-webkit-input-placeholder {
     color: white;
     
@@ -70,7 +76,6 @@
 .heading2{
     margin-top: 1px;
     margin-bottom: 20px;
-
     font-size: 25px;
     color:white;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -88,6 +93,7 @@ input{
     color:white;
     margin-bottom: 30px;
     background: transparent;
+    border-color:#D3D3D3 ;
 }
 .Add-info{
    
@@ -97,6 +103,7 @@ input{
     border-width: 0px 0px 1px 0px;
     margin-top: 20px;
     margin-bottom: 30px;
+    border-color:#D3D3D3 ;
 }
 .zip{
     width: 35%;
@@ -106,6 +113,7 @@ input{
     background: transparent;
     margin-top: 20px;
     margin-bottom: 30px;
+    border-color:#D3D3D3 ;
 }
 .place{
     margin-top: 21px;
@@ -117,6 +125,7 @@ input{
     border-width: 0px 0px 1px 0px;
     margin-top: 20px;
     margin-bottom: 30px;
+    border-color:#D3D3D3 ;
 }
 .country{
     width: 100%;
@@ -126,6 +135,7 @@ input{
     background: transparent;
     margin-top: 20px;
     margin-bottom: 30px;
+    border-color:#D3D3D3 ;
 }
 
 .code{
@@ -136,11 +146,12 @@ input{
     margin-top: 15px;
     margin-bottom: 30px;
     background: transparent;
+    border-color:#D3D3D3 ;
 }
 .phne{
   margin-left: 30px;
     width: 70%;
-   
+    border-color:#D3D3D3 ;
     background-color: #4e4efa92;
     border-width: 0px 0px 1px 0px;
     margin-top: 15px;
@@ -158,6 +169,8 @@ input{
     background: transparent;
     cursor: pointer;
     margin-bottom: 30px;
+    border-color:#D3D3D3 ;
+    
 
 }
 .terms{
