@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import "./Form.css";
 import {Form1} from "./Form1";
+// import { useNavigate } from "react-router-dom"
 
 function Form2() {
   const intiallValues = {
@@ -23,13 +24,14 @@ function Form2() {
     // data.preventDefault();
     console.log(data);
   };
+
+  
   // const handlechange = (e) => {
   //   const name = e.target.name;
   //   const value = e.target.value;
   //   setFormmValues({...formmValue, [name] : value})
   //   register(name, {required : "Please fill this feild"});
   // }
-
   return (
     <div className="cards">
       <div className="card2">
@@ -65,7 +67,7 @@ function Form2() {
             // onChange={handlechange}
             placeholder="Zip"
             className="zip"
-            {...register("Zip", { required: "Please enter your Zip" })}
+            {...register("Zip", { required: "Please enter your Zip" , maxLength: 10})}
           />
 
           <select id="Place" name="Place" className="place">
@@ -106,13 +108,12 @@ function Form2() {
 
           <input
             type="number"
-            pattern="[0-9]"
             name="phone"
             // value={formmValue.phone}
             // onChange={handlechange}
             placeholder="Phone number"
             className="phne"
-            {...register("phone", { required: "Please enter your phone" })}
+            {...register("phone", { required: "Please enter your phone", maxLength: 10})}
           />
           <br />
           <input
@@ -122,11 +123,12 @@ function Form2() {
             // onChange={handlechange}
             placeholder="Your Email"
             className="email"
-            {...register("email", { required: "Please enter your email" })}
+            {...register("email", { required: "Please enter your email",
+            pattern: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+          })}
           />
           <br />
           <input type="checkbox" id="terms" name="terms" 
-          // value="" 
           {...register("terms", { required: "Please enter your terms" })}/>
           <span>
             {" "}

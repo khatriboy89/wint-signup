@@ -58,11 +58,11 @@ function Form1() {
               
               placeholder="First Name"
               className="fname"
-              {...register("firstName", { required: "Please enter your first name." })}
+              // {...register("fname", { required: "Please enter your first name." })}
             />
-            <error>
+            {/* <error>
                               {errors.fname?.type ==="required" && "First Name is required"}
-                            </error>
+                            </error> */}
 
             <input
               type="text"
